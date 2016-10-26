@@ -24,46 +24,47 @@ module.exports = (knex) => {
   router.get("/resources", (req, res) => {
     knex
       .join('users', 'users.id', '=', 'resources.user_id')
-      .select('users.name', 'resources.name', 'resources.link')
-      .from("resources")
+      .join('resources')
+      .select('resources.id', 'resources.name', 'resources.link')
+      .from("user_resource")
       .then((results) => {
         res.json(results);
       });
   })
 
-  //Shows single resource in users resources
-  router.get("/resources/:resourceid", (req, res) => {
-    knex
-      .join('users', 'users.id', '=', 'resources.user_id')
-      .select('users.name', 'resources.name', 'resources.link')
-      .from("resources")
-      .where("resources.id", req.params.id)
-      .then((results) => {
-        res.json(results);
-      });
-  })
+  // //Shows single resource in users resources
+  // router.get("/resources/:resourceid", (req, res) => {
+  //   knex
+  //     .join('users', 'users.id', '=', 'resources.user_id')
+  //     .select('users.name', 'resources.name', 'resources.link')
+  //     .from("resources")
+  //     .where("resources.id", req.params.id)
+  //     .then((results) => {
+  //       res.json(results);
+  //     });
+  // })
 
-  //get all search results
-  router.get("/search", (req, res) => {
-    knex
-      .select("*")
-      .from("resources")
-      .where("id", req.params.id)
-      .then((results) => {
-        res.json(results);
-      });
-  })
+  // //get all search results
+  // router.get("/search", (req, res) => {
+  //   knex
+  //     .select("*")
+  //     .from("resources")
+  //     .where("id", req.params.id)
+  //     .then((results) => {
+  //       res.json(results);
+  //     });
+  // })
 
-  //render registration form
-  router.get("/register", (req, res) => {
-    res.render('register_form');
-  })
+  // //render registration form
+  // router.get("/register", (req, res) => {
+  //   res.render('register_form');
+  // })
 
 
-  //form for user to input new resource
-  router.get("/resources/new", (req, res) => {
-    res.render('new_resource')
-  })
+  // //form for user to input new resource
+  // router.get("/resources/new", (req, res) => {
+  //   res.render('new_resource')
+  // })
 
 
   // router.post("/resources/new", (req, res) => {
