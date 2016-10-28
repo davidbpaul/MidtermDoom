@@ -4,15 +4,6 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex
-    .select('name')
-    .from("users")
-    .then((results) => {
-      res.json(results);
-    });
-  })
-
   router.get("/:userid", (req, res) => {
     knex
     .select('resources.link', 'resources.title', 'resources.description', 'users.name')

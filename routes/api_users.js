@@ -3,6 +3,15 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
+  router.get("/", (req, res) => {
+    knex
+    .select('name', 'id', 'password')
+    .from("users")
+    .then((results) => {
+      res.json(results);
+    });
+  })
+
   // Shows the comments that a user has left on a resource
   router.get("/:userid/comments", (req, res) => {
     knex

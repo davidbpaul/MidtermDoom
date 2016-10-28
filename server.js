@@ -21,6 +21,7 @@ const usersRoutes = require("./routes/users");
 const resourcesRoutes = require("./routes/resources");
 const topicsRoutes = require("./routes/topics")
 const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -40,6 +41,11 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+// Home page
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
 // Mount all resource routes
 app.use("/api/resources", resourcesApiRoutes(knex));
 app.use("/api/users", usersApiRoutes(knex));
@@ -47,13 +53,7 @@ app.use("/users", usersRoutes(knex));
 app.use("/resources", resourcesRoutes(knex));
 app.use("/topics", topicsRoutes(knex));
 app.use("/register", registerRoutes(knex));
-
-// Home page
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-
+app.use("/login", loginRoutes(knex));
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
