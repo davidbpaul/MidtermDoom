@@ -29,7 +29,7 @@ h1 {
     padding-top: 0px;
 }
 
-button {
+#nav-bar button {
     background-color: #008080;
     position: fixed;
     top: 35px;
@@ -41,9 +41,9 @@ button {
 }
 
 #resources {
-  position: relative;
   max-width: 100%;
-  width: 100%;
+  margin:auto;
+
 }
 
 .white-panel {

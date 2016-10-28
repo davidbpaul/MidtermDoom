@@ -3,10 +3,13 @@
   <head>
     <title>Home Page</title>
 
+    <!-- css -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <link rel="stylesheet" href="/styles/resources.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- javascript -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
@@ -19,57 +22,454 @@
       <span class="header">DOOM</span>
       <button type="button" width ="50px" height="50px">NEW</button>
     </nav>
-     <section id="resources">
-
-      <article class="white-panel"><img src="http://i.imgur.com/sDLIAZD.png" alt="">
-        <h4><a href="#">Title 1</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-        <h4><a href="#">Title 2</a></h4>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/xOIMvAe.jpg" alt="">
-        <h4><a href="#">Title 3</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </article>
-
-
-      <article class="white-panel"> <img src="http://i.imgur.com/3gXW3L3.jpg" alt="">
-        <h4><a href="#">Title 4</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/o2RVMqm.jpg" alt="">
-        <h4><a href="#">Title 5</a></h4>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/kFFpuKA.jpg" alt="">
-        <h4><a href="#">Title 6</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </article>
-
-
-
-      <article class="white-panel"><img src="http://i.imgur.com/E9RmLPA.jpg" alt="">
-        <h4><a href="#">Title 7</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
-        <h4><a href="#">Title 8</a></h4>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </article>
-
-    </section>
-
+      <!-- grid -->
+      <main id="resources">
+        <!-- layout -->
+        <section class="resource_grid">
+        <!-- specific article -->
+          <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+          <!-- extras -->
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+           <article class = "resource_specific">
+            <header class = "header_is_on_top">
+            <div class = "rating_score">
+               <h3 class = "rating">5</h3>
+            </div>
+            <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+            </header>
+            <section>
+              <div class="message">
+                <p></p>
+              </div>
+              <div class = "foot">
+                <p><small>12 people have liked this..</small>
+                </div>
+            </section>
+            <footer class = "head">
+                <div class = "commit">
+                <button class = "like"><small>like</small></button>
+                <button class = "rate"><small>rate</small></button>
+                </div>
+            </footer>
+            <section class= "latest_comment">
+              <article class = "comment_view">
+                <header class = "latest_coment_head">
+                  <h5 class ="name">Bill Fields</h5>
+                </header>
+                  <div class="messages">
+                  <p><small>I will survive the next walking dead season</small></p>
+                  </div>
+              </article>
+            </section>
+            </div>
+            <section class="social">
+            <div class = "make_a_comment">
+             <form action="/comment/" method="POST">
+             <textarea class ="comment" name="comment" placeholder="Write a comment"></textarea>
+             </form>
+             </div>
+            </section>
+          </article>
+        </section>
+      </main>
   </body>
 </html>
+
