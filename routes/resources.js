@@ -11,7 +11,7 @@ module.exports = (knex) => {
   router.post("/new", (req, res) => {
     const name = req.body.name
     const link = req.body.link
-    const user_id = req.body.
+    const user_id = req.seasion.user_id
 
     knex
       knex('resources').insert({id: id, name: name, link: link, user_id: user_id})
