@@ -28,13 +28,21 @@
 
   <body>
 
-    <% include headerLoggedOut.ejs %>
+    <% include headerLoggedIn.ejs %>
 
 <body>
 <div class="container">
   <div class="row">
 
-
+<main class="container">
+  <section class="new-reference" id="compose-reference">
+    <h2>Save A Link</h2>
+    <form id="referenceForm" action="/new" type="POST">
+      <textarea name="text" class="text" placeholder="What would you like to save?"></textarea>
+      <input type="submit" id="submitReference" value="Save">
+    </form>
+  </section>
+</main>
 
     <hr>
     <section id="pinBoot">
