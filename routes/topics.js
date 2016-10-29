@@ -5,7 +5,7 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex
-    .select('resources.link', 'resources.title', 'resources.description', 'topics.topic')
+    .select('topics.id', 'resources.image', 'resources.link', 'resources.title', 'resources.description', 'topics.topic')
     .join('topics', 'topics.id', '=', 'topic_id')
     .join('resources', 'resources.id', '=', 'resource_id')
     .from("topic_resource")
