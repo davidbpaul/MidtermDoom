@@ -14,7 +14,12 @@ module.exports = (knex) => {
     const user_id = req.seasion.user_id
 
     knex
-      knex('resources').insert({id: id, name: name, link: link, user_id: user_id})
+      knex('resources').insert({
+        id: id,
+        name: name,
+        link: link,
+        user_id: user_id
+      })
       .then(function() {
         return insert = true;
       })
