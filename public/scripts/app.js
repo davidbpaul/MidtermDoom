@@ -1,4 +1,13 @@
 $(() => {
+
+  $( "#compose-reference" ).hide()
+
+  $( "#composeNew" ).click(function(event) {
+    console.log("button clicked");
+    $( "#compose-reference" ).slideToggle();
+    $(".text").focus();
+  });
+
   function renderRef(references) {
     $('#references-container').empty();
     $.each(references, function(index, ref) {
