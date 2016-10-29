@@ -5,7 +5,7 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.get("/new", (req, res) => {
-    res.render('new_resource')
+    res.render('../views/newRef.ejs');
   })
 
   router.post("/new", (req, res) => {

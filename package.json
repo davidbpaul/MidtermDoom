@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
@@ -22,6 +23,7 @@
     "lsof": "^0.1.0",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
+    "node-uuid": "^1.4.7",
     "pg": "^6.0.2"
   },
   "devDependencies": {

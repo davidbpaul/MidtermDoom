@@ -1,41 +1,42 @@
 "use strict";
 const express = require('express');
 const router  = express.Router();
+const uuid = require('node-uuid');
+const bcrypt = require('bcrypt-nodejs');
 
 module.exports = (knex) => {
-  
+
   router.get("/", (req, res) => {
-    res.render('register_form');
+    res.render('register');
   })
 
   router.post("/", (req, res) => {
     //get information from user
-    const name = req.body.name
-    const email = req.body.email
-    const hashed_password = bcrypt.hashSync(req.body.password)
+    const name = req.body.name;
+    const email = req.body.email;
+    const password= bcrypt.hashSync(req.body.password);
       //checks if email already belongs to someone
       knex
-      .select('email').from('users')
+      .select('email')
+      .from('users')
       .where('email', email)
-      .asCallback(function(err, rows) {
-        if(rows.length = 1){
-          res.status(400);
-          res.send('email taken');
-        };
-      });
+      .then((results) => {
+        if (!results[0]) {
+          knex('users')
+          .insert({
+            id: uuid.v4(),
+            name: name,
+            email: email,
+            password: password
+          })
+          .return({inserted: true});
 
-      //checks if user filled out form
-      // if (email === '' || name === '' bcrypt.compareSync('', hashed_password)) {
-      //   res.status(400);
-      //   res.send('missing information');
-      // } else {
-      //   knex
-      //   .insert({name: name, email: email, password: hashed_password}).into('users')
-      //   .then(function() {
-      //     return insert = true;
-      //   })
-        res.redirect('/')
-      // };
-  })
+        } else {
+          console.log(`${email} already taken`);
+        }
+      })
+      res.end();
+    });
+
   return router;
 }
