@@ -34,16 +34,22 @@
 <div class="container">
   <div class="row">
 
-<main class="container">
+<main class="container" >
   <section class="new-reference" id="compose-reference">
     <h2>Save A Link</h2>
     <form id="referenceForm" action="/new" type="POST">
       <textarea name="text" class="text" placeholder="What would you like to save?"></textarea>
+      <div class="form-group">
+                       <label class="sr-only" for="exampleInputPassword2">Resource URL</label>
+                       <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+
       <input type="submit" id="submitReference" value="Save">
     </form>
   </section>
 </main>
+      <section class="all-references" id="references-container">
 
+    </section>
     <hr>
     <section id="pinBoot">
         <article class = "white-panel">
@@ -51,6 +57,7 @@
             <div class = "rating_score">
               <h3 class = "rating">5</h3>
             </div>
+
             <div class = "title"><h6><small>something I found interesting online</small></h6></div>
           </header>
           <section class= "body">
@@ -262,30 +269,6 @@ single_column_breakpoint: 700
 });
 });
 
-/*
-Ref:
-Thanks to:
-http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Style-Grid-Layout-Pinterest-Grid.html
-*/
-
-
-/*
-    Pinterest Grid Plugin
-    Copyright 2014 Mediademons
-    @author smm 16/04/2014
-
-    usage:
-
-     $(document).ready(function() {
-
-        $('#blog-landing').pinterest_grid({
-            no_columns: 4
-        });
-
-    });
-
-
-*/
 ;(function ($, window, document, undefined) {
     var pluginName = 'pinterest_grid',
         defaults = {
