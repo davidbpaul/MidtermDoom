@@ -1,3 +1,4 @@
+
 $(() => {
 
   $( "#compose-reference" ).hide()
@@ -91,7 +92,3 @@ $("#submitReference").on("click", function(event) {
 
 
 
-
-
-
-// may need to hide compose reference

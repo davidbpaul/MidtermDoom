@@ -7,8 +7,7 @@ module.exports = (knex) => {
     knex
     .select('resources.title', 'resources.link', 'resources.description', 'users.name')
     .join('users', 'users.id', '=', 'user_id')
-    .join('resources', 'resources.id', '=', 'resource_id')
-    .from("user_resource")
+    .from("resources")
     .then((results) => {
       res.json(results);
     });

@@ -7,9 +7,8 @@ module.exports = (knex) => {
   router.get("/:userid", (req, res) => {
     knex
     .select('resources.link', 'resources.title', 'resources.description', 'users.name')
-    .join('users', 'users.id', '=', 'user_id')
-    .join('resources', 'resources.id', '=', 'resource_id')
-    .from("user_resource")
+    .join('resources', 'users.id', '=', 'user_id')
+    .from("users")
     .where("users.id", req.params.userid)
     .then((results) => {
       res.json(results);

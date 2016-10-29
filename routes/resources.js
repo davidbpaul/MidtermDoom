@@ -11,7 +11,7 @@ module.exports = (knex) => {
   router.post("/new", (req, res) => {
     const name = req.body.name
     const link = req.body.link
-    const user_id = req.body.
+    const user_id = req.seasion.user_id
 
     knex
       knex('resources').insert({id: id, name: name, link: link, user_id: user_id})
@@ -22,13 +22,15 @@ module.exports = (knex) => {
 
   router.get("/:resourceid", (req, res) => {
     knex
-    .select('resources.link', 'resources.title', 'resources.description', 'users.name')
-    .join('users', 'users.id', '=', 'user_id')
-    .join('resources', 'resources.id', '=', 'resource_id')
-    .from("user_resource")
+    .select('resources.link', 'resources.image', 'resources.title', 'resources.description', 'users.name')
+    .join('resources', 'users.id', '=', 'user_id')
+    .from("users")
     .where("resources.id", req.params.resourceid)
     .then((results) => {
-      res.json(results);
+      console.log(results);
+      res.render("oneRef", {
+        user: req.session.user_id,
+        resource: results[0]})
     });
   })
 
