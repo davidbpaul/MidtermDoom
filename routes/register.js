@@ -11,11 +11,10 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
-    //get information from user
     const name = req.body.name;
     const email = req.body.email;
     const password= bcrypt.hashSync(req.body.password);
-      //checks if email already belongs to someone
+    const id = uuid.v4();
       knex
       .select('email')
       .from('users')
@@ -24,18 +23,18 @@ module.exports = (knex) => {
         if (!results[0]) {
           knex('users')
           .insert({
-            id: uuid.v4(),
+            id: id,
             name: name,
             email: email,
             password: password
           })
-          .return({inserted: true});
-
+          .return({inserted: true})
+          req.session.user_id = id;
+          res.redirect('/')
         } else {
-          console.log(`${email} already taken`);
+          res.redirect('/register')
         }
       })
-      res.end();
     });
 
   return router;

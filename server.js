@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session');
 
 // Seperated Routes for each Resource
 const resourcesApiRoutes = require("./routes/api_resources");
@@ -22,6 +23,7 @@ const resourcesRoutes = require("./routes/resources");
 const topicsRoutes = require("./routes/topics")
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login")
+const logoutRoutes = require("./routes/logout")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -40,10 +42,28 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.session.user_id) {
+    knex
+    .select('id', 'email', 'password')
+    .from("users")
+    .where("id", req.session.user_id)
+    .then((results) => {
+      res.render("index", {
+        user: results[0]
+      })
+    })
+  } else {
+    res.render("index", {
+      user: false
+    });
+  }
 });
 
 // Mount all resource routes
@@ -54,6 +74,7 @@ app.use("/resources", resourcesRoutes(knex));
 app.use("/topics", topicsRoutes(knex));
 app.use("/register", registerRoutes(knex));
 app.use("/login", loginRoutes(knex));
+app.use("/logout", logoutRoutes(knex));
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

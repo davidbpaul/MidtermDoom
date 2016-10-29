@@ -59,7 +59,10 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-
+      <form action="/logout" method="POST">
+          <% console.log(user.email) %>
+          <input type="submit" value="Logout" />
+      </form>
         </li>
       </ul>
     </div>
