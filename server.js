@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
       })
     })
   } else {
-    res.render("index", {
+    res.render("topics", {
       user: false
     });
   }
