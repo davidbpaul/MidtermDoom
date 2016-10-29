@@ -9,13 +9,13 @@ $(document).ready(() => {
                       </header>
                       <section class= "body">
                         <div class ='article_picture'>
-                          <img src="http://i.imgur.com/sDLIAZD.png" alt="">
+                          <img src=${data.image} alt="">
                         </div>
                         <div class = 'article_title'>
-                          <h4><a href="#">Title 1</a></h4>
+                          <h4><a href="#">${data.title}</a></h4>
                         </div>
                         <div class = 'description'>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venerit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                          <p>${data.description}</p>
                         </div>
                       </section>
                       <section>
@@ -28,4 +28,18 @@ $(document).ready(() => {
                       </section>`)
     return $resource;
     }
+
+    const renderResources = (resources) => {
+      for (const resource of resources) {
+        createResource(resource);
+      }
+    }
+
+    $.ajax({
+      method: 'GET',
+      url: '/topics',
+      success: (response) => {
+        renderResources(response);
+      }
+    })
   })
