@@ -27,6 +27,7 @@
   </head>
 
   <body>
+
     <% if (user) { %>
       <% include ./partials/headerLoggedIn.ejs %>
     <% } else { %>
@@ -39,7 +40,10 @@
           <section class="new-reference" id="compose-reference">
             <h2>Save A Link</h2>
             <form id="referenceForm" action="/new" type="POST">
-              <textarea name="text" class="text" placeholder="What would you like to save?"></textarea>
+              <textarea name="url" class="text" placeholder="What would you like to save?"></textarea>
+              <textarea name="title" class="text" placeholder="Title"></textarea>
+              <textarea name="topic" class="text" placeholder="What topic does this fall under?"></textarea>
+              <textarea name="description" class="text" placeholder="A brief description"></textarea>
               <input type="submit" id="submitReference" value="Save">
             </form>
           </section>
@@ -70,6 +74,7 @@
                    <a class = "like"><big>like</big></a>
                </div>
             </section>
+>>>>>>> 50abf335f44948a7dbd6176e1566403cbddbc1cf
             <section class = "foot">
               <p><small>12 people have liked this..</small>
             </section>
@@ -234,6 +239,31 @@
                </div>
             </section>
             <section class = "foot">
+<<<<<<< HEAD
+              <p><small>12 people have liked this..</small>
+          </section>
+              </article>
+    </section>
+
+
+    <hr>
+
+
+  </div>
+  <p>
+    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FZkk0O" target="_blank"><small>HTML</small><sup>5</sup></a>
+    <br>
+    <br>
+
+  </p>
+
+</div>
+
+</body>
+</html>
+
+
+=======
               <p><small>12 people have liked this..</small></p>
             </section>
           </article>
@@ -246,5 +276,6 @@
       </p>
     </div>
     <script type="text/javascript" src= "/scripts/bootstrap.js"> </script>
+
   </body>
 </html>
