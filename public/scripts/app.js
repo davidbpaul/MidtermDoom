@@ -53,7 +53,7 @@ $(document).ready(function(){
       method: 'GET',
       url: `/api/resources/${res_id}/likes`,
       success: (response) => {
-          $('.foot p').text(`${response.length} people have liked this..`);
+        $('.foot p').text(`${response.length} people have liked this..`)
       }
     })
   })
@@ -72,7 +72,6 @@ $(document).ready(function(){
               createReference(res);
             }
           }
-          alert(output);
         }
       }
     })

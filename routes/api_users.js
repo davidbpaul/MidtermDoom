@@ -35,7 +35,7 @@ module.exports = (knex) => {
     .join('resources', 'resources.id', '=', 'resource_id')
     .leftOuterJoin('ratings', 'resources.id', '=', 'ratings.resource_id')
     .from("likes")
-    .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
+    .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description')
     .where("resources.user_id", req.session.user_id)
     .orWhere("likes.user_id", req.session.user_id)
     .then((results) => {
