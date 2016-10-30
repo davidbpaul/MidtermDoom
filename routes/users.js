@@ -19,6 +19,7 @@ module.exports = (knex) => {
     .from("resources")
     .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
     .where("resources.user_id", req.session.user_id)
+    .orWhere("likes.user_id", req.session.user_id)
     .then((results) => {
       res.render("index", {
         resources: results,

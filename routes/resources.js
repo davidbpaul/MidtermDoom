@@ -55,10 +55,7 @@ module.exports = (knex) => {
         .return({inserted: true})
       }
     })
-
-
-
-      res.redirect('/users');
+    res.redirect('/users');
   })
 
   router.get("/:resourceid", (req, res) => {
