@@ -1,17 +1,7 @@
-
 $(document).ready(() => {
-$( "#compose-reference" ).hide()
-
-  $( "#composeNew" ).click(function(event) {
-    console.log("button clicked");
-    $( "#compose-reference" ).slideToggle();
-    $(".text").focus();
-  });
-
-
-  const newResourceElement = (data) => {
-    const $resourceEl = $("<article>").addClass('white-panel').appendTo("section#pinBoot");
-    $resourceEl.append(`<header class = "header_is_on_top">
+  const createResource = (data) => {
+    const $resource = $("<article>").addClass('white-panel').appendTo("section#pinBoot");
+    $resource.append(`<header class = "header_is_on_top">
                         <div class = "rating_score">
                           <h3 class = "rating">5</h3>
                         </div>
@@ -36,41 +26,20 @@ $( "#compose-reference" ).hide()
                       <section class = "foot">
                         <p><small>12 people have liked this..</small>
                       </section>`)
-    return $resourceEl;
-    }
+    return $resource;
+  }
 
-    const renderResources = (resources) => {
-      for (const resource of resources) {
-        newResourceElement(resource);
-      }
+  const renderResources = (resources) => {
+    for (const resource of resources) {
+      createResource(resource);
     }
+  }
 
-    $.ajax({
-      method: 'GET',
-      url: '/api/resources',
-      success: (response) => {
-        renderResources(response);
-      }
-    })
+  $.ajax({
+    method: 'GET',
+    url: `/api/topics${topic}`,
+    success: (response) => {
+      renderResources(response);
+    }
   })
-
-
-$("#submitReference").on("click", function(event) {
-  console.log("submit clicked")
-    event.preventDefault();
-
-    $.ajax({
-      method: 'POST',
-      url: "/api/resources",
-      data: $('#referenceForm').serialize(),
-      success: function(ref) {
-        loadReference();
-      }
-
-    });
-     $('textarea.text').val == "";
-
-});
-
-
-
+})
