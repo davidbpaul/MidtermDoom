@@ -48,11 +48,8 @@ var __slice = [].slice;
     };
 
     Starrr.prototype.setRating = function(rating) {
-      // $.ajax({
-      // method: 'POST',
-      // url: `/api/resources/${res_id}/likes`,
-      // data: rating
-      // })
+      const res_id = ($('#single').data('id'));
+
       if (this.options.rating === rating) {
         rating = void 0;
       }

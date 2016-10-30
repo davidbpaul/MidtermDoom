@@ -82,6 +82,7 @@ module.exports = (knex) => {
 
   router.post("/:resourceid/ratings", (req, res) => {
     const id = uuid.v4();
+    const rating = req.body.rating;
     const user_id = req.session.user_id;
     const resource_id = req.params.resourceid;
 
@@ -94,6 +95,7 @@ module.exports = (knex) => {
         knex('ratings')
         .insert({
           id: id,
+          rating: rating,
           user_id: user_id,
           resource_id: resource_id
         })
