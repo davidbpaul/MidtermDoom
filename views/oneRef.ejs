@@ -17,6 +17,7 @@
       <script type="text/javascript" src="/scripts/app.js"></script>
       <script type="text/javascript" src="/scripts/rating.js"></script>
       <script type="text/javascript" src= "scripts/bootstrap.js"> </script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   </head>
   <body>
   <% if (user) { %>
@@ -39,7 +40,7 @@
               </div>
               <div class="info">
                 <div class = 'post_description'>
-                  <h4>Created By</h4>
+                  <h4>Created By:</h4>
                   <h5><%= resource.name %></h5>
                 </div>
 
@@ -59,12 +60,12 @@
                   <a class = "rate"><big>Rate</big></a>
                 </div>
                 <div class = "foot">
-                  <p>12 people have liked this..</p>
+                  <p><%= resource.count %> people have liked this..</p>
                 </div>
               </section>
               <div class = "rating_score">
                 <h5 class = "word_rating">This Post Has A Rating Of</h5>
-                <h3 class = "rating">5</h3>
+                <h3 class = "rating"><%= Math.round(Number(resource.avg)) %></h3>
               </div>
               <section class = "comments">
                 <hr>

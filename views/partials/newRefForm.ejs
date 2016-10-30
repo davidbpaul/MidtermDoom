@@ -2,13 +2,22 @@
       <div class="row">
         <main class="container">
           <section class="new-reference" id="compose-reference">
-            <h2>Save A Link</h2>
-            <form id="referenceForm" action="/new" type="POST">
-              Resource URL: <input type="text" name="url" placeholder="https://"><br>
-              Title: <input type="text" name="title" placeholder="Build-A-Chair"><br>
-              Description: <input type="text" name="description" placeholder="building a chair"><br>
-              Img: <input type="text" name="refImage" placeholder=".jpg"><br>
-              <input type="submit" id="submitReference" value="Save">
+            <form class="form-signin" action="/resources/new" method="POST">
+              <h2 class="form-signin-heading">Save A Link</h2>
+
+              <label for="inputURL" class="sr-only">Resource URL</label>
+              <input type="text" id="inputEmail" class="form-control" placeholder="Resource URL" required autofocus name="url">
+
+              <label for="inputTitle" class="sr-only">Title</label>
+              <input type="text" id="inputPassword" class="form-control" placeholder="Title" required name="title">
+
+              <label for="inputDescription" class="sr-only">Description</label>
+              <input type="text" id="inputPassword" class="form-control" placeholder="Description" required name="description">
+
+              <label for="inputImage" class="sr-only">Image URL</label>
+              <input type="text" id="inputPassword" class="form-control" placeholder="Image URL" required name="refImage">
+
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
             </form>
           </section>
-        </main>
+        </main> <!-- /container -->

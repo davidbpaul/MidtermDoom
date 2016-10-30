@@ -51,19 +51,31 @@ app.use(cookieSession({
 app.get("/", (req, res) => {
   if (req.session.user_id) {
     knex
-    .select('id', 'email', 'password')
-    .from("users")
-    .where("id", req.session.user_id)
+    .select('resources.id', 'resources.title', 'resources.image','resources.link', 'resources.description', 'users.name')
+    .count('likes')
+    .avg('ratings.rating')
+    .join('users', 'users.id', '=', 'user_id')
+    .leftOuterJoin('likes', 'resources.id', '=', 'likes.resource_id')
+    .leftOuterJoin('ratings', 'resources.id', '=', 'ratings.resource_id')
+    .from("resources")
+    .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
     .then((results) => {
       res.render("index", {
-        user: results[0]
-      })
-    })
+        resources: results,
+        user: req.session.user_id
+      });
+    });
   } else {
     knex
-    .select('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
+    knex
+    .select('resources.id', 'resources.title', 'resources.image','resources.link', 'resources.description', 'users.name')
+    .count('likes')
+    .avg('ratings.rating')
     .join('users', 'users.id', '=', 'user_id')
+    .leftOuterJoin('likes', 'resources.id', '=', 'likes.resource_id')
+    .leftOuterJoin('ratings', 'resources.id', '=', 'ratings.resource_id')
     .from("resources")
+    .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
     .then((results) => {
       res.render("index", {
         resources: results,

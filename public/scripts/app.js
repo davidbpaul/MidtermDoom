@@ -11,18 +11,19 @@ $(document).ready(function(){
 
  }
 
-$("#submitReference").on("click", function(event) {
-  console.log("submit clicked")
-    event.preventDefault();
+  $("#submitReference").on("click", function(event) {
+    console.log("submit clicked")
+      event.preventDefault();
 
-    $.ajax({
-      method: 'POST',
-      url: "/api/resources",
-      data: $('#referenceForm').serialize(),
-      success: function(ref) {
-        loadReference();
-      }
+      $.ajax({
+        method: 'POST',
+        url: "/api/resources",
+        data: $('#referenceForm').serialize(),
+        success: function(ref) {
+          loadReference();
+        }
 
-    });
-     $('textarea.text').val == "";
+      });
+       $('textarea.text').val == "";
+  });
 });

@@ -36,11 +36,7 @@
 
     <div class="container">
       <div class="row">
-        <main class="container">
-          <section class="new-reference" id="compose-reference">
-          </section>
-        </main>
-        <h1>Topic Here</h1>
+        <h1><%= topics[0].topic %></h1>
         <hr>
         <section id="pinBoot">
           <% for (const topic of topics) { %>
@@ -48,9 +44,9 @@
               <a href="/resources/<%= topic.id %>">
                 <header class = "header_is_on_top">
                   <div class = "rating_score">
-                    <h3 class = "rating">5</h3>
+                    <h3 class = "rating"><%= Math.round(Number(topic.avg)) %></h3>
                   </div>
-                  <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+                  <div class = "title"><p>Created by: <%= topic.name %></p></div>
                 </header>
                 <section class= "body">
                   <div class ='article_picture'>
@@ -69,7 +65,7 @@
                    </div>
                 </section>
                 <section class = "foot">
-                  <p><small>12 people have liked this..</small>
+                  <p><%= topic.count %> people have liked this..</p>
                 </section>
               </a>
             </article>

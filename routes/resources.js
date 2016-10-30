@@ -34,10 +34,15 @@ module.exports = (knex) => {
 
   router.get("/:resourceid", (req, res) => {
     knex
-    .select('resources.link', 'resources.image', 'resources.title', 'resources.description', 'users.name')
-    .join('resources', 'users.id', '=', 'user_id')
-    .from("users")
+    .select('resources.id', 'resources.title', 'resources.image','resources.link', 'resources.description', 'users.name')
+    .count('likes')
+    .avg('ratings.rating')
+    .join('users', 'users.id', '=', 'user_id')
+    .leftOuterJoin('likes', 'resources.id', '=', 'likes.resource_id')
+    .leftOuterJoin('ratings', 'resources.id', '=', 'ratings.resource_id')
+    .from("resources")
     .where("resources.id", req.params.resourceid)
+    .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
     .then((results) => {
       console.log(results);
       res.render("oneRef", {
