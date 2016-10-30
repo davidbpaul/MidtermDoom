@@ -9,16 +9,23 @@ module.exports = (knex) => {
   })
 
   router.post("/new", (req, res) => {
-    const name = req.body.name
-    const link = req.body.link
+    const title = req.body.title
+    const link = req.body.url
+    const topic = req.body.topic
+    const description = req.body.description
     const user_id = req.seasion.user_id
 
     knex
       knex('resources').insert({
         id: id,
-        name: name,
         link: link,
+        title: title,
+        description:description,
         user_id: user_id
+      })
+       knex('resources').insert({
+        id: id,
+        topic:topic
       })
       .then(function() {
         return insert = true;

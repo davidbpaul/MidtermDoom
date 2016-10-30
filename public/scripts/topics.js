@@ -1,45 +1,27 @@
 $(document).ready(() => {
-  const createResource = (data) => {
-    const $resource = $("<article>").addClass('white-panel').appendTo("section#pinBoot");
-    $resource.append(`<header class = "header_is_on_top">
-                        <div class = "rating_score">
-                          <h3 class = "rating">5</h3>
-                        </div>
-                        <div class = "title"><h6><small>something I found interesting online</small></h6></div>
-                      </header>
-                      <section class= "body">
-                        <div class ='article_picture'>
-                          <img src=${data.image} alt="">
-                        </div>
-                        <div class = 'article_title'>
-                          <h4><a href="#">${data.title}</a></h4>
-                        </div>
-                        <div class = 'description'>
-                          <p>${data.description}</p>
-                        </div>
-                      </section>
-                      <section>
-                         <div class = "head">
-                             <a class = "like"><big>like</big></a>
-                         </div>
-                      </section>
-                      <section class = "foot">
-                        <p><small>12 people have liked this..</small>
+  const createTopic = (data) => {
+    const $topic = $("<article>").addClass('white-panel').appendTo("section#pinBoot");
+    $topic.append(`<section class= "body">
+                        <a href="/topics/${data.id}">
+                          <div class = 'article_title'>
+                            <h4>${data.topic}</h4>
+                          </div>
+                        </a>
                       </section>`)
-    return $resource;
-    }
+    return $topic;
+  }
 
-    const renderResources = (resources) => {
-      for (const resource of resources) {
-        createResource(resource);
-      }
+  const renderTopics = (resources) => {
+    for (const resource of resources) {
+      createTopic(resource);
     }
+  }
 
-    $.ajax({
-      method: 'GET',
-      url: '/topics',
-      success: (response) => {
-        renderResources(response);
-      }
-    })
+  $.ajax({
+    method: 'GET',
+    url: '/api/topics',
+    success: (response) => {
+      renderTopics(response);
+    }
   })
+})
