@@ -1,12 +1,15 @@
+// // database
+$(document).ready(function(){
 
-$(document).ready(() => {
-$( "#compose-reference" ).hide()
+ function renderRef(references) {
+   $('#references-container').empty();
+   $.each(references, function(index, ref) {
+     console.log(ref);
+     var $eachref = createArticleElement(ref);
+     $eachref.prependTo("#references-container");
+   });
 
-  $( "#composeNew" ).click(function(event) {
-    console.log("button clicked");
-    $( "#compose-reference" ).slideToggle();
-    $(".text").focus();
-  });
+ }
 
 $("#submitReference").on("click", function(event) {
   console.log("submit clicked")
@@ -22,5 +25,4 @@ $("#submitReference").on("click", function(event) {
 
     });
      $('textarea.text').val == "";
-
 });
