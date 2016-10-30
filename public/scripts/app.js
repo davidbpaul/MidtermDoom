@@ -3,7 +3,6 @@ $(document).ready(function(){
 
   const createReference = (data) => {
     const $reference = $("<article>").addClass('white-panel').appendTo("section#pinBoot");
-
     $reference.append(`<a href="/resources/${data.id}">
                         <header class = "header_is_on_top">
                           <div class = "rating_score">
@@ -41,7 +40,7 @@ $(document).ready(function(){
         }
 
       });
-       $('textarea.text').val == "";
+    
   });
 
   $(".social .head .like").on("click", () => {
@@ -191,4 +190,3 @@ $("#submitReference").on("click", function(event) {
   }
   loadComments();
 });
-
