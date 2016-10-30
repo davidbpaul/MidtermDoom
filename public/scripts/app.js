@@ -114,63 +114,31 @@ $("#submitReference").on("click", function(event) {
   //comments
   function renderComments(comments) {
     console.log(comments)
-    $('.comments').empty();
+    $('.commentList').empty();
     comments.reverse().forEach(function(comment){
       console.log(comment)
-      $('.comments').append(createCommentElement(comment));
+      $('.commentList').append(createCommentElement(comment));
     })
   }
   function createCommentElement(refComment) {
-    const commentcontent = `  <div class="titleBox">
-                                <label>Comments</label>
-                                <button type="button" class="close" aria-hidden="true">&times;</button>
+   const commentcontent = `
+                            <div class="commentText">
+                              <p class=${refComment.comments.comment}</p> <span class="date sub-text">on March 5th, 2014</span>
                               </div>
-                              <div class="commentBox">
-                                <p class="taskDescription">Let people know what you found helpful</p>
-                              </div>
-                              <div class="actionBox">
-                                <ul class="commentList">
-                                <li>
-                                <div class="commentText">
-                                  <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="commentText">
-                                  <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="commentText">
-                                  <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                                </div>
-                              </li>
-                            </ul>
-                          <form class="form-inline" role="form">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Your comments" />
-                            </div>
-                            <div class="form-group">
-                              <button class="btn btn-default">Add</button>
-                            </div>
-                          </form>
-                        </div>`
+                             `
 
-    console.log(commentcontent)
-    return commentcontent;
-  };
+   console.log(commentcontent)
+   return commentcontent;
+ };
 
  loadComments()
 
-  $(".form-inline").on("submit", function (ev) {
+  $("#form-inline").on("submit", function (ev) {
+    console.log('hey')
     ev.preventDefault();
     const res_id = ($('#single').data('id'));
-    console.log(res_id);
     const text = $('.form-control').val()
-    console.log(text);
-    console.log(text)
     const data = $(this).serialize()
-    console.log(data)
       $.ajax({
         url: '/api/resources/${res_id}/comments',
         method: 'POST',
@@ -186,6 +154,7 @@ $("#submitReference").on("click", function(event) {
       url: '/api/resources/${res_id}/comments',
       method: 'GET',
       success: function (data) {
+        console.log(data)
         renderComments(data);
       }
     })
