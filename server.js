@@ -62,11 +62,11 @@ app.get("/", (req, res) => {
     .then((results) => {
       res.render("index", {
         resources: results,
-        user: req.session.user_id
+        user: req.session.user_id,
+        title: "All"
       });
     });
   } else {
-    knex
     knex
     .select('resources.id', 'resources.title', 'resources.image','resources.link', 'resources.description', 'users.name')
     .count('likes')
@@ -79,7 +79,8 @@ app.get("/", (req, res) => {
     .then((results) => {
       res.render("index", {
         resources: results,
-        user: false
+        user: false,
+        title: "All"
       });
     });
   }

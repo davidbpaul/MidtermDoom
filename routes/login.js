@@ -18,7 +18,7 @@ module.exports = (knex) => {
     .then((results) => {
       if (bcrypt.compareSync(req.body.password, results[0].password)) {
         req.session.user_id = results[0].id;
-        res.redirect("/");
+        res.redirect("/users");
       } else {
         res.send("Incorrect username or password")
       };

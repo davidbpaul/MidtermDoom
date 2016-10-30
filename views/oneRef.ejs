@@ -53,6 +53,26 @@
                   <h4>Description:</h4>
                   </p> <%= resource.description %></p>
                 </div>
+                <section class = "comments">
+                  <hr>
+                  <div class ="old_comment_style">
+                    <section class = "old_comment">
+                      <header class = "header_comment">
+                        <h5 class ="name">Bill Fields</h5>
+                      </header>
+                      <div class="message">
+                        <p>this is a comment</p>
+                      </div>
+                    </section>
+                  </div>
+                  <section class = "new_comment">
+                    <form action="/comments" method="POST">
+                      <textarea class="new_comment_form" placeholder="Write a comment.."></textarea>
+                      <input type="submit" value="Send">
+                      <span class="counter">140</span>
+                    </form>
+                  </section>
+                </section>
               </div>
               <section class = "social">
                 <div class = "head">
@@ -67,26 +87,6 @@
                 <h5 class = "word_rating">This Post Has A Rating Of</h5>
                 <h3 class = "rating"><%= Math.round(Number(resource.avg)) %></h3>
               </div>
-              <section class = "comments">
-                <hr>
-                <div class ="old_comment_style">
-                  <section class = "old_comment">
-                    <header class = "header_comment">
-                      <h5 class ="name">Bill Fields</h5>
-                    </header>
-                    <div class="message">
-                      <p>this is a comment</p>
-                    </div>
-                  </section>
-                </div>
-                <section class = "new_comment">
-                  <form action="/comments" method="POST">
-                    <textarea class="new_comment_form" placeholder="Write a comment.."></textarea>
-                    <input type="submit" value="Send">
-                    <span class="counter">140</span>
-                  </form>
-                </section>
-              </section>
             </section>
           </article>
             <!-- extra -->

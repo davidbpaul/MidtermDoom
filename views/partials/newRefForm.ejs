@@ -1,23 +1,28 @@
 <div class="container">
-      <div class="row">
-        <main class="container">
-          <section class="new-reference" id="compose-reference">
-            <form class="form-signin" action="/resources/new" method="POST">
-              <h2 class="form-signin-heading">Save A Link</h2>
+  <div class="row">
+    <main class="container">
+      <section class="new-reference" id="compose-reference">
+        <form class="form-signin" action="/resources/new" method="POST">
+          <h2 class="form-signin-heading">Save A Link</h2>
 
-              <label for="inputURL" class="sr-only">Resource URL</label>
-              <input type="text" id="inputEmail" class="form-control" placeholder="Resource URL" required autofocus name="url">
+          <label for="inputURL" class="sr-only">Resource URL</label>
+          <input type="text" id="inputEmail" class="form-control" placeholder="Resource URL" required autofocus name="url">
 
-              <label for="inputTitle" class="sr-only">Title</label>
-              <input type="text" id="inputPassword" class="form-control" placeholder="Title" required name="title">
+          <label for="inputTitle" class="sr-only">Title</label>
+          <input type="text" id="inputPassword" class="form-control" placeholder="Title" required name="title">
 
-              <label for="inputDescription" class="sr-only">Description</label>
-              <input type="text" id="inputPassword" class="form-control" placeholder="Description" required name="description">
+          <label for="inputImage" class="sr-only">Image URL</label>
+          <input type="text" id="inputPassword" class="form-control" placeholder="Image URL" required name="image">
 
-              <label for="inputImage" class="sr-only">Image URL</label>
-              <input type="text" id="inputPassword" class="form-control" placeholder="Image URL" required name="refImage">
+          <label for="inputDescription" class="sr-only">Description</label>
+          <input type="text" id="inputPassword" class="form-control" placeholder="Description" required name="description">
 
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
-            </form>
-          </section>
-        </main> <!-- /container -->
+          <label for="inputTopic" class="sr-only">Topic</label>
+          <input type="text" id="inputTopic" class="form-control" placeholder="Topic" required name="topic">
+
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+        </form>
+      </section>
+    </main> <!-- /container -->
+  </div>
+</div>

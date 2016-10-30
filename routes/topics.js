@@ -5,10 +5,8 @@ const router  = express.Router();
 module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex
-    .select('topics.id', 'resources.image', 'resources.link', 'resources.title', 'resources.description', 'topics.topic')
-    .join('topics', 'topics.id', '=', 'topic_id')
-    .join('resources', 'resources.id', '=', 'resource_id')
-    .from("topic_resource")
+    .select('topics.id', 'topics.topic')
+    .from("topics")
     .then((results) => {
       res.render("topics", {
         user: req.session.user_id,

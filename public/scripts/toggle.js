@@ -1,9 +1,9 @@
 $(document).ready(() => {
-
+  $( "#compose-reference" ).hide()
     $( "#composeNew" ).click(function(event) {
       console.log("button clicked");
       $( "#compose-reference" ).slideToggle();
-      $(".text").focus();
+      $("input[name=url]").focus();
     });
 })
 

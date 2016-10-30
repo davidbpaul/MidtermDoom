@@ -30,7 +30,7 @@ module.exports = (knex) => {
           })
           .return({inserted: true})
           req.session.user_id = id;
-          res.redirect('/')
+          res.redirect('/users')
         } else {
           res.redirect('/register')
         }

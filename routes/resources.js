@@ -1,35 +1,64 @@
 "use strict";
 const express = require('express');
 const router  = express.Router();
+const uuid = require('node-uuid');
 
 module.exports = (knex) => {
 
   router.get("/new", (req, res) => {
-    res.render('../views/newRef.ejs');
+    res.render('newRef');
   })
 
   router.post("/new", (req, res) => {
-    const title = req.body.title
-    const link = req.body.url
-    const topic = req.body.topic
-    const description = req.body.description
-    const user_id = req.seasion.user_id
+    const resourceId = uuid.v4();
+    const topicId = uuid.v4();
+    const title = req.body.title;
+    const link = req.body.url;
+    const image = req.body.image;
+    const topic = req.body.topic.toLowerCase();
+    const description = req.body.description;
+    const user_id = req.session.user_id;
+
+    knex('resources').insert({
+      id: resourceId,
+      link: link,
+      title: title,
+      image: image,
+      description:description,
+      user_id: user_id
+    })
+    .return({inserted: true})
 
     knex
-      knex('resources').insert({
-        id: id,
-        link: link,
-        title: title,
-        description:description,
-        user_id: user_id
-      })
-       knex('resources').insert({
-        id: id,
-        topic:topic
-      })
-      .then(function() {
-        return insert = true;
-      })
+    .select("topics.id", "topics.topic")
+    .from('topics')
+    .where('topics.topic', topic)
+    .then((results) => {
+      if (!results[0]) {
+        knex('topics').insert({
+          id: topicId,
+          topic: topic
+        })
+        .return({inserted: true})
+
+        knex('topic_resource').insert({
+          topic_id: topicId,
+          resource_id: resourceId
+        })
+        .return({inserted: true})
+
+      } else {
+        knex('topic_resource').insert({
+          topic_id: results[0].id,
+          resource_id: resourceId
+        })
+        .return({inserted: true})
+      }
+    })
+
+
+
+      res.redirect('/users');
   })
 
   router.get("/:resourceid", (req, res) => {
@@ -44,7 +73,6 @@ module.exports = (knex) => {
     .where("resources.id", req.params.resourceid)
     .groupBy('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
     .then((results) => {
-      console.log(results);
       res.render("oneRef", {
         user: req.session.user_id,
         resource: results[0]})

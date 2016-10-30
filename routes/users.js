@@ -22,7 +22,8 @@ module.exports = (knex) => {
     .then((results) => {
       res.render("index", {
         resources: results,
-        user: req.session.user_id
+        user: req.session.user_id,
+        title: "My"
       });
     });
   })
