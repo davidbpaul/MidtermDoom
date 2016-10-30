@@ -1,6 +1,7 @@
 "use strict";
 const express = require('express');
 const router  = express.Router();
+const uuid = require('node-uuid');
 
 module.exports = (knex) => {
 
@@ -42,6 +43,29 @@ module.exports = (knex) => {
       res.json(results);
     });
   })
+
+  router.post("/:resourceid/likes", (req, res) => {
+    const id = uuid.v4();
+    const user_id = req.session.user_id;
+    const resource_id = req.params.resourceid;
+
+    knex('likes')
+    .select('id')
+    .where('user_id', user_id)
+    .andWhere('resource_id', resource_id)
+    .then((results) => {
+      if (!results[0]) {
+        knex('likes')
+        .insert({
+          id: id,
+          user_id: user_id,
+          resource_id: resource_id
+        })
+        .return({inserted: true});
+      }
+    })
+  });
+
 
   router.get("/:resourceid/ratings", (req, res) => {
     knex
