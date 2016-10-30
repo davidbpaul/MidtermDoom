@@ -10,7 +10,7 @@
   width:35px;
   float:left;
   border-radius:2px;
-  background-color:orange;
+  border: 1px solid;
   padding:5px;
 
 }
@@ -82,17 +82,15 @@ border-radius:3px;
 border: 1px solid #bccae0;
 margin:7px;
 }
+
 .like{
   margin:4px;
-  color:orange;
   float:right;
   line-height:100%;
   border-radius:3px;
   font-weight: 900;
-
-
-
 }
+
 .rate{
   margin:4px;
   color:#484a4c;
@@ -121,5 +119,3 @@ margin:7px;
   height: 40px;
   background-color: #e8e8e8;
 }
-
-
