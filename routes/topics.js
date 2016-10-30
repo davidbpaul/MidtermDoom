@@ -29,9 +29,10 @@ module.exports = (knex) => {
     .where("topics.id", req.params.topicsid)
     .groupBy('resources.id', 'resources.link', 'resources.image', 'resources.title', 'resources.description', 'topics.topic', 'users.name')
     .then((results) => {
-      res.render("single_topic", {
+      res.render("index", {
         user: req.session.user_id,
-        topics: results
+        resources: results,
+        title: `Topic: ${results[0].topic}`
       });
     });
   });

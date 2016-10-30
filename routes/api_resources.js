@@ -103,5 +103,31 @@ module.exports = (knex) => {
     });
   })
 
+
+  router.post("/:resourceid/ratings", (req, res) => {
+    const id = uuid.v4();
+    const rating = req.body.rating;
+    const user_id = req.session.user_id;
+    const resource_id = req.params.resourceid;
+
+    knex('ratings')
+    .select('id')
+    .where('user_id', user_id)
+    .andWhere('resource_id', resource_id)
+    .then((results) => {
+      if (!results[0]) {
+        knex('ratings')
+        .insert({
+          id: id,
+          rating: rating,
+          user_id: user_id,
+          resource_id: resource_id
+        })
+        .return({inserted: true});
+      }
+    })
+  });
+
+
   return router;
 }
