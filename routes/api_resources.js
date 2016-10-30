@@ -22,7 +22,7 @@ module.exports = (knex) => {
 
   router.get("/:resourceid/comments", (req, res) => {
     knex
-    .select('users.name', 'resources.link', 'comments.comment')
+    .select('users.name', 'comments.comment')
     .join('users', 'users.id', '=', 'user_id')
     .join('resources', 'resources.id', '=', 'resource_id')
     .from("comments")
@@ -49,6 +49,7 @@ module.exports = (knex) => {
     const user_id = req.session.user_id;
     const resource_id = req.params.resourceid;
 
+
     knex('likes')
     .select('id')
     .where('user_id', user_id)
@@ -58,6 +59,29 @@ module.exports = (knex) => {
         knex('likes')
         .insert({
           id: id,
+          user_id: user_id,
+          resource_id: resource_id
+        })
+        .return({inserted: true});
+      }
+    })
+  });
+
+   router.post("/:resourceid/comments", (req, res) => {
+    const id = uuid.v4();
+    const user_id = req.session.user_id;
+    const resource_id = req.params.resourceid;
+    const comment = req.body.comment_text;
+    knex('comments')
+    .select('id')
+    .where('user_id', user_id)
+    .andWhere('resource_id', resource_id)
+    .then((results) => {
+      if (!results[0]) {
+        knex('comments')
+        .insert({
+          id: id,
+          comment: comment,
           user_id: user_id,
           resource_id: resource_id
         })
