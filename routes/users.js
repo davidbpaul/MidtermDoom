@@ -23,7 +23,7 @@ module.exports = (knex) => {
       res.render("index", {
         resources: results,
         user: req.session.user_id,
-        title: "My"
+        title: "My Resources"
       });
     });
   })

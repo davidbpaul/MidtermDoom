@@ -63,7 +63,7 @@ app.get("/", (req, res) => {
       res.render("index", {
         resources: results,
         user: req.session.user_id,
-        title: "All"
+        title: "All Resources"
       });
     });
   } else {
@@ -80,7 +80,7 @@ app.get("/", (req, res) => {
       res.render("index", {
         resources: results,
         user: false,
-        title: "All"
+        title: "All Resources"
       });
     });
   }
