@@ -29,10 +29,12 @@
 
   <body>
 
-
+     <% if (user) { %>
      <% include ./partials/headerLoggedIn.ejs %>
      <% include ./partials/newRefForm.ejs %>
-
+     <% } else { %>
+     <% include ./partials/headerLoggedOut.ejs %>
+      <% } %>
 
     <div class="container">
       <div class="row">
