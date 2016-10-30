@@ -48,6 +48,11 @@ var __slice = [].slice;
     };
 
     Starrr.prototype.setRating = function(rating) {
+      // $.ajax({
+      // method: 'POST',
+      // url: `/api/resources/${res_id}/likes`,
+      // data: rating
+      // })
       if (this.options.rating === rating) {
         rating = void 0;
       }
@@ -102,37 +107,6 @@ $(function() {
   return $(".starrr").starrr();
 });
 
-$( document ).ready(function() {
-
-    var correspondence=["","Really Bad","Bad","Fair","Good","Excelent"];
-
-  $('.ratable').on('starrr:change', function(e, value){
-
-     $(this).closest('.evaluation').children('#count').html(value);
-     $(this).closest('.evaluation').children('#meaning').html(correspondence[value]);
-
-     var currentval=  $(this).closest('.evaluation').children('#count').html();
-
-    var target=  $(this).closest('.evaluation').children('.indicators');
-    target.css("color","black");
-    target.children('.rateval').val(currentval);
-    target.children('#textwr').html(' ');
-
-
-    if(value<3){
-     target.css("color","red").show();
-     target.children('#textwr').text('What can be improved?');
-    }else{
-        if(value>3){
-            target.css("color","green").show();
-            target.children('#textwr').html('What was done correctly?');
-        }else{
-       target.hide();
-        }
-    }
-
-  });
-
 
 
 
@@ -140,75 +114,5 @@ $( document ).ready(function() {
   $('#hearts-existing').on('starrr:change', function(e, value){
     $('#count-existing').html(value);
   });
-});
 
-
-
-
-
-$(function () {
-    $('.button-checkbox').each(function () {
-
-        // Settings
-        var $widget = $(this),
-            $button = $widget.find('button'),
-            $checkbox = $widget.find('input:checkbox'),
-            color = $button.data('color'),
-            settings = {
-                on: {
-                    icon: 'glyphicon glyphicon-check'
-                },
-                off: {
-                    icon: 'fa fa-square-o'
-                }
-            };
-
-        // Event Handlers
-        $button.on('click', function () {
-            $checkbox.prop('checked', !$checkbox.is(':checked'));
-            $checkbox.triggerHandler('change');
-            updateDisplay();
-        });
-        $checkbox.on('change', function () {
-            updateDisplay();
-        });
-
-        // Actions
-        function updateDisplay() {
-            var isChecked = $checkbox.is(':checked');
-
-            // Set the button's state
-            $button.data('state', (isChecked) ? "on" : "off");
-
-            // Set the button's icon
-            $button.find('.state-icon')
-                .removeClass()
-                .addClass('state-icon ' + settings[$button.data('state')].icon);
-
-            // Update the button's color
-            if (isChecked) {
-                $button
-                    .removeClass('btn-default')
-                    .addClass('btn-' + color + ' active');
-            }
-            else {
-                $button
-                    .removeClass('btn-' + color + ' active')
-                    .addClass('btn-default');
-            }
-        }
-
-        // Initialization
-        function init() {
-
-            updateDisplay();
-
-            // Inject the icon if applicable
-            if ($button.find('.state-icon').length == 0) {
-                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
-            }
-        }
-        init();
-    });
-});
 
