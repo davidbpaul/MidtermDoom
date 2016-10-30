@@ -109,87 +109,63 @@ $("#submitReference").on("click", function(event) {
     })
   })
 
-
+$(document).ready(function(){
 
   //comments
   function renderComments(comments) {
-    console.log(comments)
-    $('.comments').empty();
+    console.log("renderComments")
+    $('.commentList').empty();
     comments.reverse().forEach(function(comment){
       console.log(comment)
       $('.comments').append(createCommentElement(comment));
     })
   }
   function createCommentElement(refComment) {
-    const commentcontent = `  <div class="titleBox">
-                                <label>Comments</label>
-                                <button type="button" class="close" aria-hidden="true">&times;</button>
-                              </div>
-                              <div class="commentBox">
-                                <p class="taskDescription">Let people know what you found helpful</p>
-                              </div>
-                              <div class="actionBox">
-                                <ul class="commentList">
-                                <li>
+    console.log("createCommentElement")
+    var $comment = $('<article>').addClass('newComment');
+    $comment.html(
+     `
                                 <div class="commentText">
-                                  <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                  <p class=${refComment.comments.comment}</p> <span class="date sub-text">on March 5th, 2014</span>
                                 </div>
-                              </li>
-                              <li>
-                                <div class="commentText">
-                                  <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="commentText">
-                                  <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-                                </div>
-                              </li>
-                            </ul>
-                          <form class="form-inline" role="form">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Your comments" />
-                            </div>
-                            <div class="form-group">
-                              <button class="btn btn-default">Add</button>
-                            </div>
-                          </form>
-                        </div>`
+                              `
+                              )
 
-    console.log(commentcontent)
-    return commentcontent;
+
+    return $comment;
   };
 
- loadComments()
-
-  $(".form-inline").on("submit", function (ev) {
-    ev.preventDefault();
-    const res_id = ($('#single').data('id'));
-    console.log(res_id);
-    const text = $('.form-control').val()
-    console.log(text);
-    console.log(text)
-    const data = $(this).serialize()
-    console.log(data)
-      $.ajax({
-        url: '/api/resources/${res_id}/comments',
-        method: 'POST',
-        data: data,
-        success: loadComments
-      });
-      $('.form-control').val("")
-  });
-
-  function loadComments(){
+function loadComments(){
+    console.log("loadcomments")
     const res_id = ($('#single').data('id'));
     $.ajax({
       url: '/api/resources/${res_id}/comments',
       method: 'GET',
-      success: function (data) {
-        renderComments(data);
+      dataType:'json',
+      success: function (comments) {
+
+        renderComments(comments);
       }
+
     })
   }
-  loadComments();
+
+
+  $("#form-inline").on("submit", function (ev) {
+    ev.preventDefault();
+    console.log("submit");
+    const res_id = ($('#single').data('id'));
+      $.ajax({
+        url: `/api/resources/${res_id}/comments`,
+        method: 'POST',
+        data: $(".form-control").serialize(),
+        success: function(comm) {
+          loadComments();
+        }
+      });
+      $('.form-control').val("")
+  });
+
+});
 });
 
