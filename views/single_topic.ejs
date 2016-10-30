@@ -45,31 +45,33 @@
         <section id="pinBoot">
           <% for (const topic of topics) { %>
             <article class="white-panel">
-              <header class = "header_is_on_top">
-                <div class = "rating_score">
-                  <h3 class = "rating">5</h3>
-                </div>
-                <div class = "title"><h6><small>something I found interesting online</small></h6></div>
-              </header>
-              <section class= "body">
-                <div class ='article_picture'>
-                  <img src=<%= topic.image %> alt="">
-                </div>
-                <div class = 'article_title'>
-                  <h4><a href="#"><%= topic.title %></a></h4>
-                </div>
-                <div class = 'description'>
-                  <p><%= topic.description %></p>
-                </div>
-              </section>
-              <section>
-                 <div class = "head">
-                     <a class = "like"><big>like</big></a>
-                 </div>
-              </section>
-              <section class = "foot">
-                <p><small>12 people have liked this..</small>
-              </section>
+              <a href="/resources/<%= topic.id %>">
+                <header class = "header_is_on_top">
+                  <div class = "rating_score">
+                    <h3 class = "rating">5</h3>
+                  </div>
+                  <div class = "title"><h6><small>something I found interesting online</small></h6></div>
+                </header>
+                <section class= "body">
+                  <div class ='article_picture'>
+                    <img src=<%= topic.image %> alt="">
+                  </div>
+                  <div class = 'article_title'>
+                    <h4><a href="#"><%= topic.title %></a></h4>
+                  </div>
+                  <div class = 'description'>
+                    <p><%= topic.description %></p>
+                  </div>
+                </section>
+                <section>
+                   <div class = "head">
+                       <a class = "like"><big>like</big></a>
+                   </div>
+                </section>
+                <section class = "foot">
+                  <p><small>12 people have liked this..</small>
+                </section>
+              </a>
             </article>
           <% } %>
         </section>

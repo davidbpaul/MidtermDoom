@@ -3,15 +3,6 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-  router.get("/", (req, res) => {
-    knex
-    .select('resources.title', 'resources.link', 'resources.description', 'users.name')
-    .join('users', 'users.id', '=', 'user_id')
-    .from("resources")
-    .then((results) => {
-      res.json(results);
-    });
-  })
 
   router.get("/:resourceid/comments", (req, res) => {
     knex

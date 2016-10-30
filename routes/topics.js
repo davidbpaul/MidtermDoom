@@ -19,12 +19,13 @@ module.exports = (knex) => {
 
   router.get("/:topicsid", (req, res) => {
     knex
-    .select('resources.link', 'resources.image', 'resources.title', 'resources.description', 'topics.topic')
+    .select('resources.id', 'resources.link', 'resources.image', 'resources.title', 'resources.description', 'topics.topic')
     .join('topics', 'topics.id', '=', 'topic_id')
     .join('resources', 'resources.id', '=', 'resource_id')
     .from("topic_resource")
     .where("topics.id", req.params.topicsid)
     .then((results) => {
+      console.log(results);
       res.render("single_topic", {
         user: req.session.user_id,
         topics: results

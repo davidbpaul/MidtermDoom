@@ -60,8 +60,15 @@ app.get("/", (req, res) => {
       })
     })
   } else {
-    res.render("index", {
-      user: false
+    knex
+    .select('resources.id', 'resources.title', 'resources.image', 'resources.link', 'resources.description', 'users.name')
+    .join('users', 'users.id', '=', 'user_id')
+    .from("resources")
+    .then((results) => {
+      res.render("index", {
+        resources: results,
+        user: false
+      });
     });
   }
 });
