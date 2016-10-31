@@ -71,23 +71,15 @@ module.exports = (knex) => {
     const id = uuid.v4();
     const user_id = req.session.user_id;
     const resource_id = req.params.resourceid;
-    const comment = req.body.comment_text;
-    knex('comments')
-    .select('id')
-    .where('user_id', user_id)
-    .andWhere('resource_id', resource_id)
-    .then((results) => {
-      if (!results[0]) {
-        knex('comments')
-        .insert({
-          id: id,
-          comment: comment,
-          user_id: user_id,
-          resource_id: resource_id
-        })
-        .return({inserted: true});
-      }
-    })
+    let comment = req.body.comment;
+      knex('comments')
+      .insert({
+        id: id,
+        comment: comment,
+        user_id: user_id,
+        resource_id: resource_id
+      })
+      .return({inserted: true});
   });
 
 
