@@ -16,12 +16,14 @@
       <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
       <script type="text/javascript" src="/scripts/app.js"></script>
       <script type="text/javascript" src="/scripts/rating.js"></script>
+      <script type="text/javascript" src="/scripts/toggle.js"></script>
       <script type="text/javascript" src= "scripts/bootstrap.js"> </script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   </head>
   <body>
   <% if (user) { %>
     <% include ./partials/headerLoggedIn.ejs %>
+    <% include ./partials/newRefForm.ejs %>
   <% } else { %>
     <% include ./partials/headerLoggedOut.ejs %>
   <% } %>
@@ -43,12 +45,10 @@
                   <h4>Created By:</h4>
                   <h5><%= resource.name %></h5>
                 </div>
-
                 <div class = 'post_description'>
                   <h4>Link:</h4>
                   <a href=<%= resource.link %>><%= resource.link %></a>
                 </div>
-
                 <div class = 'post_description'>
                   <h4>Description:</h4>
                   </p> <%= resource.description %></p>

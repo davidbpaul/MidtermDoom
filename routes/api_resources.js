@@ -67,7 +67,7 @@ module.exports = (knex) => {
     })
   });
 
-   router.post("/:resourceid/comments", (req, res) => {
+  router.post("/:resourceid/comments", (req, res) => {
     const id = uuid.v4();
     const user_id = req.session.user_id;
     const resource_id = req.params.resourceid;
