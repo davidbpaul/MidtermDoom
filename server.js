@@ -17,7 +17,6 @@ const cookieSession = require('cookie-session');
 
 // Seperated Routes for each Resource
 const resourcesApiRoutes = require("./routes/api_resources");
-const usersApiRoutes = require("./routes/api_users");
 const usersRoutes = require("./routes/users");
 const resourcesRoutes = require("./routes/resources");
 const topicsRoutes = require("./routes/topics")
@@ -88,7 +87,6 @@ app.get("/", (req, res) => {
 
 // Mount all resource routes
 app.use("/api/resources", resourcesApiRoutes(knex));
-app.use("/api/users", usersApiRoutes(knex));
 app.use("/users", usersRoutes(knex));
 app.use("/resources", resourcesRoutes(knex));
 app.use("/topics", topicsRoutes(knex));

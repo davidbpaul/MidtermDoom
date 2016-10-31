@@ -25,23 +25,8 @@ $(document).ready(function(){
                           <p>${data.count} people have liked this..</p>
                         </section>
                       </a>`)
+      return $reference;
   }
-
-  $("#submitReference").on("click", function(event) {
-    console.log("submit clicked")
-      event.preventDefault();
-
-      $.ajax({
-        method: 'POST',
-        url: "/api/resources",
-        data: $('#referenceForm').serialize(),
-        success: function(ref) {
-          loadReference();
-        }
-
-      });
-
-  });
 
   $(".social .head #like").on("click", () => {
     const res_id = ($('#single').data('id'));
