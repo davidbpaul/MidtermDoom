@@ -58,6 +58,31 @@ $(document).ready(function(){
       }
     })
   })
+  //rating
+  $(".rating_score").on("click", () => {
+    const res_id = ($('#single').data('id'));
+    const text = $('.rating_form').val():
+    const rating = Math.round(Number(rating.avg))
+    $.ajax({
+      method: 'POST',
+      url: `/api/resources/${res_id}/ratings`
+    })
+    $.ajax({
+      method: 'GET',
+      rating:rating,
+      url: `/api/resources/${res_id}/ratings`,
+      success: (response) => {
+          $('.rating').text(`${response.length}`);
+      }
+    })
+  })
+
+
+
+
+
+
+
 
   $("#search").on("click", (event) => {
     event.preventDefault();
@@ -113,11 +138,15 @@ $(document).ready(function(){
 
   //comments
   function renderComments(comments) {
+<<<<<<< HEAD
     console.log("renderComments")
+=======
+    console.log(comments)
+>>>>>>> 77a2ee609beb5461801f854538063bf8b5b31fab
     $('.commentList').empty();
     comments.reverse().forEach(function(comment){
       console.log(comment)
-      $('.comments').append(createCommentElement(comment));
+      $('.commentList').append(createCommentElement(comment));
     })
   }
   function createCommentElement(refComment) {
@@ -135,6 +164,7 @@ $(document).ready(function(){
     return $comment;
   };
 
+
 function loadComments(){
     console.log("loadcomments")
     const res_id = ($('#single').data('id'));
@@ -147,14 +177,17 @@ function loadComments(){
         renderComments(comments);
       }
 
+
     })
   }
 
 
   $("#form-inline").on("submit", function (ev) {
+
     ev.preventDefault();
     console.log("submit");
     const res_id = ($('#single').data('id'));
+
       $.ajax({
         url: `/api/resources/${res_id}/comments`,
         method: 'POST',
@@ -166,6 +199,19 @@ function loadComments(){
       $('.form-control').val("")
   });
 
-});
+
+  function loadComments(){
+    const res_id = ($('#single').data('id'));
+    $.ajax({
+      url: '/api/resources/${res_id}/comments',
+      method: 'GET',
+      success: function (data) {
+        console.log(data)
+        renderComments(data);
+      }
+    })
+  }
+  loadComments();
+
 });
 
