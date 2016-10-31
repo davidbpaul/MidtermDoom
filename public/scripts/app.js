@@ -58,6 +58,31 @@ $(document).ready(function(){
       }
     })
   })
+  //rating
+  $(".rating_score").on("click", () => {
+    const res_id = ($('#single').data('id'));
+    const text = $('.rating_form').val():
+    const rating = Math.round(Number(rating.avg))
+    $.ajax({
+      method: 'POST',
+      url: `/api/resources/${res_id}/ratings`
+    })
+    $.ajax({
+      method: 'GET',
+      rating:rating,
+      url: `/api/resources/${res_id}/ratings`,
+      success: (response) => {
+          $('.rating').text(`${response.length}`);
+      }
+    })
+  })
+
+
+
+
+
+
+
 
   $("#search").on("click", (event) => {
     event.preventDefault();

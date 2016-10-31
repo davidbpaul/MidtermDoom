@@ -29,5 +29,5 @@ module.exports = (knex) => {
     });
   })
 
-   return router;
+  return router;
 };
