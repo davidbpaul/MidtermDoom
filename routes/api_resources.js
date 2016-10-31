@@ -83,11 +83,15 @@ module.exports = (knex) => {
 
   router.get("/:resourceid/ratings", (req, res) => {
     knex
-    .select('resources.link', 'users.name', 'ratings.rating')
+    .select('resources.link', 'users.name')
+    .count('likes')
+    .avg('ratings.rating')
     .join('users', 'users.id', '=', 'user_id')
-    .join('resources', 'resources.id', '=', 'resource_id')
-    .from("ratings")
+    .leftOuterJoin('likes', 'resources.id', '=', 'likes.resource_id')
+    .leftOuterJoin('ratings', 'resources.id', '=', 'ratings.resource_id')
+    .from("resources")
     .where("resources.id", req.params.resourceid)
+    .groupBy( 'resources.link', 'users.name')
     .then((results) => {
       res.json(results);
     });

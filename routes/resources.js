@@ -61,7 +61,6 @@ module.exports = (knex) => {
   router.get("/:resourceid", (req, res) => {
     knex
     .select('resources.id', 'resources.title', 'resources.image','resources.link', 'resources.description', 'users.name')
-    .count('likes')
     .avg('ratings.rating')
     .join('users', 'users.id', '=', 'user_id')
     .leftOuterJoin('likes', 'resources.id', '=', 'likes.resource_id')

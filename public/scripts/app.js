@@ -38,7 +38,7 @@ $(document).ready(function(){
       method: 'GET',
       url: `/api/resources/${res_id}/likes`,
       success: (response) => {
-        $('.foot p').text(`${response.length} people have liked this..`)
+        $('section.social div.foot').text(`${response.length} people have liked this..`)
       }
     })
   })
@@ -62,36 +62,6 @@ $(document).ready(function(){
     })
   })
 
-$("#submitReference").on("click", function(event) {
-    console.log("submit clicked")
-      event.preventDefault();
-
-      $.ajax({
-        method: 'POST',
-        url: "/api/resources",
-        data: $('#referenceForm').serialize(),
-        success: function(ref) {
-          loadReference();
-        }
-
-      });
-       $('textarea.text').val == "";
-  });
-
-  $(".social .head .like").on("click", () => {
-    const res_id = ($('#single').data('id'));
-    $.ajax({
-      method: 'POST',
-      url: `/api/resources/${res_id}/likes`
-    })
-    $.ajax({
-      method: 'GET',
-      url: `/api/resources/${res_id}/likes`,
-      success: (response) => {
-          $('.foot p').text(`${response.length} people have liked this..`);
-      }
-    })
-  })
 
   const renderComments = (data) => {
     const $comment = $("<li>").appendTo("ul.commentList");
@@ -110,6 +80,14 @@ $("#submitReference").on("click", function(event) {
       for (const res of response) {
         renderComments(res);
       }
+    }
+  })
+
+  $.ajax({
+    method: 'GET',
+    url: `/api/resources/${$('#single').data('id')}/likes`,
+    success: (response) => {
+      $('section.social div.foot').text(`${response.length} people have liked this..`)
     }
   })
 
@@ -133,5 +111,24 @@ $("#submitReference").on("click", function(event) {
     })
   })
 
+  $("#rate").on("click", (event) => {
+    event.preventDefault();
+    if ($('#rating-input').val() < 6 && $('#rating-input').val() > 0) {
+      $.ajax({
+        method: 'POST',
+        url: `/api/resources/${$('#single').data('id')}/ratings`,
+        data: {rating: $('#rating-input').val()}
+      })
+      $('#rating-input').val('');
+      $.ajax({
+        method: 'GET',
+        url: `/api/resources/${$('#single').data('id')}/ratings`,
+        success: (response) => {
+          $('div.rating_score h3.rating').text('');
+          $('div.rating_score h3.rating').text((Math.round(response[0].avg)).toString());
+        }
+      })
+    }
+  })
 
 });
